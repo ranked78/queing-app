@@ -42,10 +42,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 1. Copy the env file
 ### Run this Commands
 
-1. composer install
-2. npm install
-3. npm run dev
-4. php artisan migrate
+- composer install
+- npm install
+- npm run dev
+- php artisan migrate
 
 ## Tutorial
 - [Multiple Authentication](https://www.youtube.com/watch?v=wOTJhqkaQeA&list=PL38wJGzpQu7PAvpOpoEaWEMuCK-SORjgK&index=5).
