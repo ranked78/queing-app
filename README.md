@@ -36,3 +36,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## How to run the application
+
+1. Copy the env file
+### Run this Commands
+
+1. composer install
+2. npm install
+3. npm run dev
+4. php artisan migrate
