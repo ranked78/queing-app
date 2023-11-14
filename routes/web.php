@@ -4,6 +4,7 @@ use App\Http\Controllers\BackPanel\AdminController;
 use App\Http\Controllers\BackPanel\VendorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserCRUDController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,4 +40,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 Route::middleware(['auth', 'role:vendor'])->group(function () {
     Route::get('vendor/dashboard', [VendorController::class, 'dashboard']);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('admin/users', UserCRUDController::class);
 });
