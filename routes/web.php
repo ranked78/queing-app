@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\BackPanel\AdminController;
-use App\Http\Controllers\BackPanel\VendorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserCRUDController;
+use App\Http\Controllers\QueueController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/queues/delete', [QueueController::class, 'deleteAll'])->name('queues.delete');
 });
 
 require __DIR__ . '/auth.php';
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('admin/dashboard', [AdminController::class, 'dashboard']);
+    Route::get('admin/home', [AdminController::class, 'dashboard']);
     Route::resource('admin/users', UserCRUDController::class);
 });
+
+Route::get('/queues/create', [QueueController::class, 'create'])->name('queue.create');
+Route::get('/queues/show/{id}', [QueueController::class, 'show'])->name('queue.show');
+Route::post('/queues/store', [QueueController::class, 'store'])->name('queue.store');

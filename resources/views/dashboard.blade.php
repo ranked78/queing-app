@@ -7,45 +7,36 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+
+            <!-- Section for the first generated number -->
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
                 </div>
-
-                <!-- Display the generated number -->
-                <div id="generated-number"
-                    class="p-6 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                    Generated Number: 0 <!-- Initialize with 0 or the last generated number from local storage -->
-                </div>
-
-                <!-- Add a button for resetting the number -->
-                <button id="reset-button"
-                    class="ml-4 p-6 bg-red-500 text-white rounded-md focus:outline-none">Reset</button>
             </div>
+
+            <!-- Section for the count of queues -->
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h3 class="text-lg font-semibold mb-4">{{ __('Queue Count') }}</h3>
+                    <p>{{ __('Total Queues: :count', ['count' => \App\Models\Queue::count()]) }}</p>
+                </div>
+            </div>
+
+            <!-- Section for the delete button -->
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h3 class="text-lg font-semibold mb-4">{{ __('Delete Queues') }}</h3>
+                    <form action="{{ route('queues.delete') }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">{{ __('Delete All Queues')
+                            }}</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Function to update and display the generated number
-            function updateGeneratedNumber(number) {
-                document.getElementById('generated-number').innerText = `Generated Number: ${number}`;
-            }
-
-            // Check if the number is already stored in local storage
-            let generatedNumber = localStorage.getItem('generatedNumber') || 0;
-
-            // Display the generated number on the page
-            updateGeneratedNumber(generatedNumber);
-
-            // Add an event listener for the reset button
-            document.getElementById('reset-button').addEventListener('click', function () {
-                // Perform the reset logic here (you can make an API call or any server-side action)
-                // For now, let's reset to 0 and update the displayed number
-                generatedNumber = 0;
-                localStorage.setItem('generatedNumber', generatedNumber);
-                updateGeneratedNumber(generatedNumber);
-            });
-        });
-    </script>
 </x-app-layout>
