@@ -50,3 +50,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Tutorial
 - [Multiple Authentication](https://www.youtube.com/watch?v=wOTJhqkaQeA&list=PL38wJGzpQu7PAvpOpoEaWEMuCK-SORjgK&index=5).
+
+## Dependencies Added
+
+- Laravel Breeze & Blade
