@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserCRUDController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth'); // Apply the 'auth' middleware to all methods except 'index'
-    //     $this->middleware('auth')->except(['index']); // Exclude 'index' from the 'auth' middleware
-    // }
-
     /**
      * Display a listing of the resource.
      *
@@ -85,7 +79,7 @@ class UserCRUDController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        return view('admin.edit', compact('user'));
     }
 
     /**
@@ -107,7 +101,7 @@ class UserCRUDController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password); // Fix: Use $request->password instead of $request->address
+        $user->password = Hash::make($request->input('password'));
 
         $user->save();
 

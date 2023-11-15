@@ -37,11 +37,5 @@ require __DIR__ . '/auth.php';
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'dashboard']);
-});
-Route::middleware(['auth', 'role:vendor'])->group(function () {
-    Route::get('vendor/dashboard', [VendorController::class, 'dashboard']);
-});
-
-Route::middleware(['auth'])->group(function () {
     Route::resource('admin/users', UserCRUDController::class);
 });

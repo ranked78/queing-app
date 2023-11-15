@@ -22,19 +22,12 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('password')
             ],
             [
-                'name' => 'Vendor',
-                'email' => 'vendor@gmail.com',
-                'role' => 'vendor',
+                'name' => 'Registrar',
+                'email' => 'registrar@gmail.com',
+                'role' => 'registrar',
                 'status' => 'active',
                 'password' => bcrypt('password')
-            ],
-            [
-                'name' => 'Customer',
-                'email' => 'customer@gmail.com',
-                'role' => 'customer',
-                'status' => 'active',
-                'password' => bcrypt('password')
-            ],
+            ]
         ]);
     }
 }
