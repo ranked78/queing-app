@@ -32,7 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //Delete Queues
     Route::delete('/queues/delete', [QueueController::class, 'deleteAll'])->name('queues.delete');
+    //Serving Queues
+    Route::post('/queues/generate', [QueueController::class, 'generateQueue'])->name('queues.generate');
+    Route::delete('/queues/deleteAllServingQueues', [QueueController::class, 'deleteAllServingQueues'])->name('queues.deleteAllServingQueues');
 });
 
 require __DIR__ . '/auth.php';

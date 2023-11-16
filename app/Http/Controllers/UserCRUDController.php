@@ -13,12 +13,12 @@ class UserCRUDController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   public function index()
-{
-    $users = User::orderBy('id', 'desc')->paginate(5);
-    
-    return view('admin.index', compact('users'));
-}
+    public function index()
+    {
+        $users = User::orderBy('id', 'desc')->paginate(5);
+
+        return view('admin.index', compact('users'));
+    }
 
 
 
@@ -42,7 +42,7 @@ class UserCRUDController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required'
         ]);
 
@@ -93,7 +93,7 @@ class UserCRUDController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'required',
         ]);
 
