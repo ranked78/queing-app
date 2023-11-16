@@ -39,4 +39,13 @@
         </div>
     </div>
 
+    @push('scripts')
+    <script>
+        // Refresh the page every 10 seconds
+        setInterval(function () {
+            location.reload();
+        }, 10000);
+    </script>
+    @endpush
+
 </x-app-layout>

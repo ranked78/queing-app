@@ -45,8 +45,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - composer install
 - npm install
 - npm run dev
-- php artisan migrate
+- php artisan migrate --seed or php artisan migrate:fresh --seed
 - php artisan serve
+
 
 ## Tutorial
 - [Multiple Authentication](https://www.youtube.com/watch?v=wOTJhqkaQeA&list=PL38wJGzpQu7PAvpOpoEaWEMuCK-SORjgK&index=5).
