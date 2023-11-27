@@ -9,6 +9,8 @@
             alert('Queue created Successfully');
         }
     </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 </head>
 
 <body class="antialiased">
@@ -19,7 +21,9 @@
                 @csrf
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700 text-sm font-semibold mb-2">Name:</label>
-                    <input type="text" name="name" id="name" class="w-full px-3 py-2 border rounded">
+                    <!-- <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Small
+                        input</label> -->
+                    <input type="text" name="name" id="name" class="w-full px-3 py-2 border rounded" required>
                 </div>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Create Queue</button>
             </form>
