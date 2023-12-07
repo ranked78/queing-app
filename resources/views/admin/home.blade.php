@@ -42,23 +42,42 @@
                             class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">CRUD</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                        <a href="{{url('dashboard')}}"
+                            class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Dashboard</a>
+                    </li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-responsive-nav-link :href="route('logout')"
+                                class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                                onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-responsive-nav-link>
+                        </form>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Welcome Message for Admin -->
+    <div class="bg-gray-100 p-4">
+        <h1 class="text-2xl font-semibold text-gray-800 dark:text-white">Welcome, Admin!</h1>
+        <p class="text-gray-600 dark:text-gray-300">We're glad to have you on the Admin Home page. Explore the features
+            and
+            manage your tasks efficiently.</p>
+    </div>
 
-    <form method="POST" action="{{ route('logout') }}">
+    <!-- <form method="POST" action="{{ route('logout') }}">
         @csrf
 
         <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                 this.closest('form').submit();">
             {{ __('Log Out') }}
         </x-responsive-nav-link>
-    </form>
+    </form> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
 </body>
