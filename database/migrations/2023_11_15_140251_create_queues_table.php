@@ -13,6 +13,9 @@ return new class extends Migration {
         Schema::create('queues', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('type_of_transaction');
+            $table->string('status')->default('In Progress');
+            $table->string('registrar')->nullable();
             $table->timestamps();
         });
     }

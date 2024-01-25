@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('password');
             $table->rememberToken();
             $table->enum('role', ['admin', 'registrar'])->default('registrar');
+            $table->integer('role_id')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });

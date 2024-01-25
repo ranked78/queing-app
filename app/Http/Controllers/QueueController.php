@@ -29,6 +29,7 @@ class QueueController extends Controller
         // Create a new queue instance and save it
         $queue = new Queue();
         $queue->name = $request->input('name');
+        $queue->type_of_transaction = $request->input('type_of_transaction');
         $queue->save();
 
         // Redirect to a route that displays the queue ID

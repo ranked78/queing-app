@@ -21,9 +21,11 @@
                 @csrf
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700 text-sm font-semibold mb-2">Name:</label>
-                    <!-- <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Small
-                        input</label> -->
                     <input type="text" name="name" id="name" class="w-full px-3 py-2 border rounded" required>
+                    <label for="type_of_transaction" class="block text-gray-700 text-sm font-semibold mb-2">Type of
+                        Transaction:</label>
+                    <input type="text" name="type_of_transaction" id="type_of_transaction"
+                        class="w-full px-3 py-2 border rounded" required>
                 </div>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Create Queue</button>
             </form>

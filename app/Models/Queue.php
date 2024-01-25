@@ -9,6 +9,9 @@ class Queue extends Model
 {
     protected $fillable = [
         'name',
+        'type_of_transaction',
+        'status',
+        'registrar'
         // other fields...
     ];
     use HasFactory;
