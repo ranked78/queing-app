@@ -24,9 +24,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Registrar Pages
+Route::prefix('')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
+    Route::resource('queue-list', QueueController::class);
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,9 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //Delete Queues
     Route::delete('/queues/delete', [QueueController::class, 'deleteAll'])->name('queues.delete');
-    //Serving Queues
-    Route::post('/queues/generate', [QueueController::class, 'generateQueue'])->name('queues.generate');
-    Route::delete('/queues/deleteAllServingQueues', [QueueController::class, 'deleteAllServingQueues'])->name('queues.deleteAllServingQueues');
 });
 
 require __DIR__ . '/auth.php';

@@ -9,6 +9,13 @@ use App\Models\Queue;
 class QueueController extends Controller
 {
 
+
+    public function index()
+    {
+        $queues = Queue::orderBy('id', 'desc')->paginate(5);
+
+        return view('queue_list', compact('queues'));
+    }
     public function show($id)
     {
         // Retrieve the queue by ID
@@ -42,19 +49,5 @@ class QueueController extends Controller
         return redirect()->route('dashboard')->with('success', 'All queues deleted successfully!');
     }
 
-
-    public function generateQueue()
-    {
-        $queueNumber = rand(100, 999); // Generate a random queue number
-        ServingQueue::create(['queue_number' => $queueNumber]);
-
-        return redirect()->route('dashboard'); // Redirect back to the dashboard
-    }
-
-    public function deleteAllServingQueues()
-    {
-        ServingQueue::truncate();
-        return redirect()->route('dashboard')->with('success', 'All serving queues deleted successfully!');
-    }
 
 }

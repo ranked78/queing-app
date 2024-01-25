@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('type_of_transaction');
-            $table->string('status')->default('In Progress');
+            $table->string('status')->default('Queueing');
             $table->string('registrar')->nullable();
             $table->timestamps();
         });
