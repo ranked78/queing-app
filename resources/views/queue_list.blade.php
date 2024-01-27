@@ -66,10 +66,14 @@
                     <td class="px-6 py-4">
                         {{$queue->type_of_transaction}}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4
+                    @if($queue->status == 'Queueing') bg-red-300 
+                    @elseif($queue->status == 'In Progress') bg-yellow-100 
+                    @elseif($queue->status == 'Done') bg-green-100 
+                    @else bg-white @endif">
                         {{$queue->status}}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class=" px-6 py-4">
                         {{$queue->registrar}}
                     </td>
                 </tr>
@@ -77,11 +81,37 @@
             </tbody>
         </table>
 
-        <!-- Include this within your HTML form or create a new form -->
-        <form method="POST" action="{{ route('update.queue.status') }}">
-            @csrf
-            <button type="submit" class="bg-blue-500 hover:bg-blue-400 rounded-md">Take a
-                Queue</button>
-        </form>
+        {!! $queues->links() !!}
+
+        <div class="flex flex-row">
+            <form method="POST" action="{{ route('update.queue.status') }}" onsubmit="inProgressMessage()">
+                @csrf
+                <button type="submit" class="bg-blue-500 hover:bg-blue-400 rounded-md">
+                    Take a Queue
+                </button>
+            </form>
+
+
+            <form method="POST" action="{{ route('mark.as.done') }}" onsubmit="markAsDone()">
+                @csrf
+                <button type="submit" class="bg-green-500 hover:bg-blue-400 rounded-md">
+                    Mark as Done
+                </button>
+            </form>
+        </div>
+
+
+
     </div>
+
+    <script>
+        function inProgressMessage() {
+            alert('Queue Updated Successfully');
+        }
+
+        function markAsDone() {
+            alert('Button Clicked!');
+        }
+    </script>
+
 </x-app-layout>

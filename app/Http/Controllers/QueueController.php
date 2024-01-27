@@ -53,6 +53,8 @@ class QueueController extends Controller
 
     public function updateStatus()
     {
+
+        $user = Auth::user();
         // Find the oldest record with the 'Queueing' status
         $oldestQueue = Queue::where('status', 'Queueing')
             ->whereNull('registrar')
@@ -60,7 +62,7 @@ class QueueController extends Controller
             ->first();
 
 
-        $user = Auth::user();
+
 
         if ($oldestQueue) {
 
@@ -77,10 +79,38 @@ class QueueController extends Controller
         <span style='margin-right: 10px;'>Name:</span> $oldestQueue->name <br>
         <span style='margin-right: 10px;'>Type of Transaction:</span> $oldestQueue->type_of_transaction";
 
+
             return redirect()->back()->with('success', $successMessage);
 
         } else {
             return redirect()->back()->with('error', 'No record in "Queueing" status found.');
+        }
+    }
+
+    public function markAsDone()
+    {
+        $user = Auth::user();
+        // Find the oldest record with the 'Queueing' status
+        $oldestQueue = Queue::where('status', 'In Progress')
+            ->where('registrar', $user->role_id)
+            ->orderBy('id')
+            ->first();
+
+        if ($oldestQueue) {
+
+            // Update the status to 'In Progress'
+            $oldestQueue->update([
+                'status' => 'Done'
+            ]);
+
+            // Format the success message
+            $successMessage = "Queue status updated successfully";
+
+
+            return redirect()->back()->with('success', $successMessage);
+
+        } else {
+            return redirect()->back()->with('error', 'No record "In Progress" status found.');
         }
     }
 

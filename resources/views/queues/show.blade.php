@@ -37,7 +37,7 @@
 <body class="antialiased">
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
         <div class="justify-center gap-5 grid" style="background: #D9D9D9;">
-            <div class="blue">Queue Number is Successfully Generated</div>
+            <div class="blue text-center">Queue Number is Successfully Generated</div>
             <p class="qId text-center"><span id="queueNumber">{{ $queue->id }}</span></p>
             <p class="name-transaction"><span id="queueName">{{ $queue->name }} -</span> <span id="typeOfTransaction">{{
                     $queue->type_of_transaction }}</span></p>
