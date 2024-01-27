@@ -1,9 +1,37 @@
 <x-app-layout>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+    <style>
+        button {
+            padding: 8px;
+            margin-top: 10px;
+            margin-left: 17px;
+        }
+    </style>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Queue List') }}
         </h2>
     </x-slot>
+
+    @if(session('success'))
+    <div class="bg-green-400">
+        {!! session('success') !!}
+    </div>
+    @elseif(session('error'))
+    <div class="bg-red-400">
+        {{ session('error') }}
+    </div>
+    @endif
 
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -41,10 +69,19 @@
                     <td class="px-6 py-4">
                         {{$queue->status}}
                     </td>
+                    <td class="px-6 py-4">
+                        {{$queue->registrar}}
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-    </div>
 
+        <!-- Include this within your HTML form or create a new form -->
+        <form method="POST" action="{{ route('update.queue.status') }}">
+            @csrf
+            <button type="submit" class="bg-blue-500 hover:bg-blue-400 rounded-md">Take a
+                Queue</button>
+        </form>
+    </div>
 </x-app-layout>

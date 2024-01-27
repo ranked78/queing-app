@@ -7,19 +7,50 @@
     <!-- Add your head content here -->
     <title>Queue Number Generated</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
+    <style>
+        .blue {
+            background: #0F6184;
+            color: white;
+            padding: 15px;
+        }
+
+        .qId {
+            color: #000;
+            font-family: Inter;
+            font-size: 175px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .name-transaction {
+            color: #000;
+            font-family: Inter;
+            font-size: 31px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    </style>
 </head>
 
 <body class="antialiased">
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
-        <div class="justify-center gap-5 grid">
-            <p>Queue ID: <span id="queueNumber">{{ $queue->id }}</span></p>
-            <p>Queue Name: <span id="queueName">{{ $queue->name }}</span></p>
-            <p>Type of Transaction: <span id="typeOfTransaction">{{ $queue->type_of_transaction }}</span></p>
+        <div class="justify-center gap-5 grid" style="background: #D9D9D9;">
+            <div class="blue">Queue Number is Successfully Generated</div>
+            <p class="qId text-center"><span id="queueNumber">{{ $queue->id }}</span></p>
+            <p class="name-transaction"><span id="queueName">{{ $queue->name }} -</span> <span id="typeOfTransaction">{{
+                    $queue->type_of_transaction }}</span></p>
+
             <!-- You can add more details or customize the display as needed -->
 
             <!-- Button to trigger print -->
-            <button onclick="printQueueDetails()" class="bg-blue-500 text-white px-4 py-2 rounded">Print Queue
-                Details</button>
+            <div>
+                <a href="{{ route('queue.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Queue Again</a>
+                <button onclick="printQueueDetails()" class="bg-blue-500 text-white px-4 py-2 rounded">Print Queue
+                    Details</button>
+            </div>
+
         </div>
     </div>
 

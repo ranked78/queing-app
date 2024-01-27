@@ -53,3 +53,4 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::get('/queues/create', [QueueController::class, 'create'])->name('queue.create');
 Route::get('/queues/show/{id}', [QueueController::class, 'show'])->name('queue.show');
 Route::post('/queues/store', [QueueController::class, 'store'])->name('queue.store');
+Route::post('/update-queue-status', [QueueController::class, 'updateStatus'])->name('update.queue.status');

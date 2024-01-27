@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ServingQueue;
+
 use Illuminate\Http\Request;
 use App\Models\Queue;
+use Illuminate\Support\Facades\Auth;
 
 class QueueController extends Controller
 {
@@ -49,5 +50,38 @@ class QueueController extends Controller
         return redirect()->route('dashboard')->with('success', 'All queues deleted successfully!');
     }
 
+
+    public function updateStatus()
+    {
+        // Find the oldest record with the 'Queueing' status
+        $oldestQueue = Queue::where('status', 'Queueing')
+            ->whereNull('registrar')
+            ->orderBy('id')
+            ->first();
+
+
+        $user = Auth::user();
+
+        if ($oldestQueue) {
+
+            // Update the status to 'In Progress'
+            $oldestQueue->update([
+                'status' => 'In Progress',
+                'registrar' => $user->role_id,
+            ]);
+
+            // Format the success message
+            $successMessage = "Queue status updated successfully.<br>
+             You are now serving: <br>
+        <span style='margin-right: 10px;'>ID:</span> $oldestQueue->id <br>
+        <span style='margin-right: 10px;'>Name:</span> $oldestQueue->name <br>
+        <span style='margin-right: 10px;'>Type of Transaction:</span> $oldestQueue->type_of_transaction";
+
+            return redirect()->back()->with('success', $successMessage);
+
+        } else {
+            return redirect()->back()->with('error', 'No record in "Queueing" status found.');
+        }
+    }
 
 }
