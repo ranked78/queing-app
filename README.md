@@ -48,6 +48,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - php artisan migrate --seed or php artisan migrate:fresh --seed
 - php artisan serve
 
+## Accounts
+1. admin@gmail.com
+2. registrar1@gmail.com
+3. registrar2@gmail.com
+4. registrar3@gmail.com
 
 ## Tutorial
 - [Multiple Authentication](https://www.youtube.com/watch?v=wOTJhqkaQeA&list=PL38wJGzpQu7PAvpOpoEaWEMuCK-SORjgK&index=5).
