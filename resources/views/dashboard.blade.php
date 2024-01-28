@@ -17,14 +17,6 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <!-- Section for the first generated number -->
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-
-
             <div class="flex flex-row gap-40 justify-center">
                 @for ($registrar = 1; $registrar <= 3; $registrar++) @php
                     $oldestQueue=\App\Models\Queue::where('status', 'In Progress' ) ->where('registrar', $registrar)
