@@ -43,7 +43,7 @@
                         </div>
                         @else
                         <div class="gray grid">
-                            <p class="text-center text-2xl">Not Assigned.</p>
+                            <p class="text-center text-2xl">Not Serving</p>
                         </div>
                         @endif
                     </div>
@@ -60,18 +60,7 @@
                 </div>
             </div>
 
-            <!-- Section for the delete button -->
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h3 class="text-lg font-semibold mb-4">{{ __('Delete Queues') }}</h3>
-                    <form action="{{ route('queues.delete') }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">{{ __('Delete All Queues')
-                            }}</button>
-                    </form>
-                </div>
-            </div>
+
         </div>
     </div>
 

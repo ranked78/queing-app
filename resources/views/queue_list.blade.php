@@ -98,7 +98,17 @@
                     Mark as Done
                 </button>
             </form>
+
+
+            <form action="{{ route('queues.delete') }}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded ml-96">{{ __('Delete All Queues')
+                    }}</button>
+            </form>
+
         </div>
+    </div>
 
 
 
