@@ -12,6 +12,12 @@
             gap: 20px;
             width: 200px;
         }
+
+        a {
+            padding: 8px;
+            margin-top: 10px;
+            margin-left: 17px;
+        }
     </style>
 
     <div class="py-12">
@@ -51,6 +57,11 @@
                     <p>{{ __('Total Queues: :count', ['count' => \App\Models\Queue::count()]) }}</p>
                 </div>
             </div>
+
+            {{-- Conditionally show the <a> tag based on the user's role --}}
+                @if(auth()->user()->role === 'admin')
+                <a href="admin/home" class="bg-red-400 rounded-md">Admin Home</a>
+                @endif
 
 
         </div>

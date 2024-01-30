@@ -49,6 +49,7 @@
                 <a href="{{ route('queue.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Queue Again</a>
                 <button onclick="printQueueDetails()" class="bg-blue-500 text-white px-4 py-2 rounded">Print Queue
                     Details</button>
+                <a href="/" class="bg-blue-500 text-white px-4 py-2 rounded">Back</a>
             </div>
 
         </div>
